@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-title">PROJECT <span>SOAPAMORPH</span></div>
+
+    <nav aria-label="Main navigation">
+      <a href="about.html">About the Project</a>
+      <a href="profile.html">Profile</a>
+      <a href="design-process.html">Design Process</a>
+      <a href="design-stl.html">Design STL</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-badge">v0.4.2 BETA</div>
+  </header>
+
+  <main>
+
+    <!-- TOP LEFT - Progress graph to show moments of standstill and moments of progression -->
+    <section class="panel" id="panel-graph">
+      <div class="panel-label">Progress Graph</div>
+      <canvas id="progress-canvas" aria-label="Project progress graph"></canvas>
+
+      <noscript>
+        <div class="feature-fallback">
+          <p>This panel normally shows a JavaScript-driven progress graph.</p>
+          <p>Current trend: steady progress with occasional development slowdowns.</p>
+        </div>
+      </noscript>
+    </section>
+
+    <!-- CENTRE -->
+    <section class="panel" id="panel-chatbot">
+      <div class="chatbot-section">
+        <h2 class="section-title">AI Assistant</h2>
+        <p class="section-subtitle">Ask a question to explore the dashboard</p>
+
+        <div class="chatbot-container">
+
+          <div class="chatbot-circle" id="chatbot-orb" aria-hidden="true">
+            <div class="outer-ring ring-1"></div>
+            <div class="outer-ring ring-2"></div>
+            <div class="outer-ring ring-3"></div>
+
+            <div class="inner-core">
+              <div class="pulse-dot"></div>
+            </div>
+
+            <div class="orbit-dots">
+              <div class="orbit-dot dot-1"></div>
+              <div class="orbit-dot dot-2"></div>
+              <div class="orbit-dot dot-3"></div>
+              <div class="orbit-dot dot-4"></div>
+            </div>
+
+            <div class="circling-lines">
+              <div class="circle-line line-orbit-1"></div>
+              <div class="circle-line line-orbit-2"></div>
+              <div class="circle-line line-orbit-3"></div>
+              <div class="circle-line line-orbit-4"></div>
+              <div class="circle-line line-orbit-5"></div>
+              <div class="circle-line line-orbit-6"></div>
+            </div>
+          </div>
+
+          <div class="chat-responses" id="chat-responses" aria-live="polite">
+            <div class="chat-msg bot">
+              <span class="bot-label">Chatbot Assistant</span>
+              Welcome to Project Soapamorph. I am here to assist guidance around the navigation of this webpage. Please feel free to ask me.
+            </div>
+          </div>
+
+          <div class="chatbot-input-container">
+            <form class="input-frame" id="chatbot-form">
+              <label for="chatbot-input" class="visually-hidden">Ask the chatbot a question</label>
+              <input type="text" id="chatbot-input" placeholder="Ask a guided question..." autocomplete="off"/>
+              <button id="send-button" type="submit" aria-label="Send message">→</button>
+            </form>
+          </div>
+
+          <noscript>
+            <div class="feature-fallback">
+              <p>The chatbot needs JavaScript for guided responses.</p>
+              <p>You can still use the navigation bar to find project pages.</p>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP RIGHT -->
+    <section class="panel" id="panel-earth">
+      <div class="panel-label">Local Origin — UK</div>
+
+      <div class="earth-wrapper">
+        <div class="earth-scene">
+          <div class="earth-glow"></div>
+
+          <div class="earth-globe">
+            <canvas class="earth-canvas" id="earth-canvas" width="140" height="140" aria-label="Animated holographic Earth"></canvas>
+            <div class="earth-grid"></div>
+          </div>
+
+          <div class="earth-holo-ring holo-r1"></div>
+          <div class="earth-holo-ring holo-r2"></div>
+        </div>
+
+        <div class="earth-time">
+          <span id="uk-time">--:--:--</span>
+          <div id="uk-date">LOADING...</div>
+          <div class="earth-label">United Kingdom · GMT</div>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="feature-fallback">
+          <p>The hologram and live UK clock use JavaScript.</p>
+          <p>Reference location: United Kingdom.</p>
+        </div>
+      </noscript>
+    </section>
+
+    <!-- BOTTOM LEFT Panel - Personal History Log -->
+    <section class="panel" id="panel-log">
+      <div class="panel-label">Personal Progress History</div>
+
+      <div class="history-current">
+        <p><strong>Current Stage:</strong> Design Preliminary Stage Prototyping</p>
+        <p><strong>Current Version:</strong> v2.0</p>
+        <p><strong>Next Goal:</strong>Finish the Preliminary Design Phase</p>
+      </div>
+
+      <div class="history-log">
+        <article class="history-entry current">
+          <p class="history-date">17.03.2026</p>
+          <p><strong>Current Version:</strong> v2.0</p>
+          <p><strong>Project Phase:</strong> Preliminary Design</p>
+          <h3>Concept Design Final Refinement.</h3>
+          <p>2D Designs finished for basic concept. 3D Design concept design finished. Updated design v2.0</p>
+        </article>
+
+        <article class="history-entry">
+          <p class="history-date">10.03.2026</p>
+          <p><strong>Current Version:</strong> v1.0</p>
+          <p><strong>Project Phase:</strong> Concept Design</p>
+          <h3>Concept Design Continuation.</h3>
+          <p>Exoskeleton concept base created. Approved by group. Modelling ongoing.</p>
+        </article>
+
+        <article class="history-entry">
+          <p class="history-date">03.03.2026</p>
+          <p><strong>Current Version:</strong> v1.0</p>
+          <p><strong>Project Phase:</strong> Concept Design</p>
+          <h3>First Skull Design Concept.</h3>
+          <p>First attempt of skull uploaded. Working next on refinement.</p>
+        </article>
+
+        <article class="history-entry">
+          <p class="history-date">24.02.2026</p>
+          <p><strong>Current Version:</strong> v1.0</p>
+          <p><strong>Project Phase:</strong> Concept Design</p>
+          <h3>Design Tasks Allocated</h3>
+          <p>I will focus on Soapomorphs skull, inner jaw and lower jaw, including the Exoskeleton.</p>
+        </article>
+
+        <article class="history-entry">
+          <p class="history-date">17.02.2026</p>
+          <p><strong>Current Version:</strong> v1.0</p>
+          <p><strong>Project Phase:</strong> Concept Design</p>
+          <h3>2D Design concept finished.</h3>
+          <p>Group came to a consensus on how the basic structure of Soapomorphs features.</p>
+        </article>
+
+        <article class="history-entry">
+          <p class="history-date">10.02.2026</p>
+          <p><strong>Current Version:</strong> v1.0</p>
+          <p><strong>Project Phase:</strong> Research Methods</p>
+          <h3>Decided on development methods.</h3>
+          <p>Group has come to a conclusion on the methods of development.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BOTTOM RIGHT Panel - Group Gantt Chart - scrollable  -->
+    <section class="panel" id="panel-gantt">
+      <div class="panel-label">Project Timeline — Gantt</div>
+
+      <div class="gantt-chart-wrap">
+        <div id="gantt-chart" class="gantt-chart">
+          <div class="feature-fallback">
+            <p><strong>Loading project schedule...</strong></p>
+            <p>If the interactive chart does not load, the rest of the site will still work normally.</p>
+          </div>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="feature-fallback">
+          <p><strong>Schedule summary:</strong></p>
+          <p>First semester workshops completed, group project active, weekly meetings ongoing, assignment due 15 May 2026.</p>
+        </div>
+      </noscript>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-text">© <span>2025/26</span> Project Soapamorph — All Rights Reserved</div>
+    <div class="footer-text">Built for <span>Staffordshire University Robotics Modelling and Drone Skin Level 6 Group A Project</span></div>
+    <div class="footer-text">Designed &amp; Developed by <span>Rachel Kirkham</span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
