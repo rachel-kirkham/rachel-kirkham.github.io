@@ -1,3 +1,4 @@
+/* Error handler */
 function safeRun(fn) {
   try {
     fn();
@@ -6,9 +7,11 @@ function safeRun(fn) {
   }
 }
 
-/* =========================
-   UK CLOCK
-========================= */
+/* 
+==================================================================================
+United Kingdom clock
+==================================================================================
+*/
 function updateUKTime() {
   const timeEl = document.getElementById("uk-time");
   const dateEl = document.getElementById("uk-date");
@@ -37,9 +40,11 @@ function updateUKTime() {
   dateEl.textContent = dateFormatter.format(now).toUpperCase();
 }
 
-/* =========================
-   EARTH CANVAS
-========================= */
+/* 
+==================================================================================
+Earth globe
+==================================================================================
+*/
 function setupEarthCanvas() {
   const canvas = document.getElementById("earth-canvas");
   if (!canvas) return;
@@ -51,6 +56,7 @@ function setupEarthCanvas() {
   const cy = H / 2;
   const R = W / 2 - 2;
 
+  /* Rough land display not entirely accurate as I don't have much experience in 3D web displays */
   const lands = [
     { name: "UK", pts: [[-5.7,50],[-3,58.6],[0.1,60.8],[1.8,57.5],[0.2,51.5],[-5,49.9],[-5.7,50]], color: "#fbbf24", glow: true },
     { pts: [[-9,36],[3,44],[15,47],[25,46],[28,42],[20,35],[10,36],[-5.4,35.8],[-9,36]] },
@@ -101,12 +107,15 @@ function setupEarthCanvas() {
     for (let lat = -80; lat <= 80; lat += 20) {
       ctx.beginPath();
       let first = true;
+
       for (let lon = -180; lon <= 180; lon += 5) {
         const p = lonLatToXY(lon, lat, rotation);
+
         if (!p) {
           first = true;
           continue;
         }
+
         if (first) {
           ctx.moveTo(p.x, p.y);
           first = false;
@@ -114,18 +123,22 @@ function setupEarthCanvas() {
           ctx.lineTo(p.x, p.y);
         }
       }
+
       ctx.stroke();
     }
 
     for (let lon = -180; lon < 180; lon += 30) {
       ctx.beginPath();
       let first = true;
+
       for (let lat = -85; lat <= 85; lat += 5) {
         const p = lonLatToXY(lon, lat, rotation);
+
         if (!p) {
           first = true;
           continue;
         }
+
         if (first) {
           ctx.moveTo(p.x, p.y);
           first = false;
@@ -133,6 +146,7 @@ function setupEarthCanvas() {
           ctx.lineTo(p.x, p.y);
         }
       }
+
       ctx.stroke();
     }
 
@@ -145,9 +159,11 @@ function setupEarthCanvas() {
 
       ctx.beginPath();
       ctx.moveTo(projected[0].x, projected[0].y);
+
       for (let i = 1; i < projected.length; i++) {
         ctx.lineTo(projected[i].x, projected[i].y);
       }
+
       ctx.closePath();
 
       if (land.glow) {
@@ -169,6 +185,7 @@ function setupEarthCanvas() {
     const rim = ctx.createRadialGradient(cx, cy, R * 0.85, cx, cy, R);
     rim.addColorStop(0, "transparent");
     rim.addColorStop(1, "rgba(0,229,255,0.25)");
+
     ctx.beginPath();
     ctx.arc(cx, cy, R, 0, Math.PI * 2);
     ctx.fillStyle = rim;
@@ -177,6 +194,7 @@ function setupEarthCanvas() {
     const spec = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.35, 0, cx - R * 0.35, cy - R * 0.35, R * 0.5);
     spec.addColorStop(0, "rgba(255,255,255,0.08)");
     spec.addColorStop(1, "transparent");
+
     ctx.beginPath();
     ctx.arc(cx, cy, R, 0, Math.PI * 2);
     ctx.fillStyle = spec;
@@ -189,9 +207,11 @@ function setupEarthCanvas() {
   drawEarth();
 }
 
-/* =========================
-   PROGRESS GRAPH
-========================= */
+/* 
+==================================================================================
+Group progress graph
+==================================================================================
+*/
 function setupProgressGraph() {
   const canvas = document.getElementById("progress-canvas");
   if (!canvas) return;
@@ -199,59 +219,78 @@ function setupProgressGraph() {
   const ctx = canvas.getContext("2d");
 
   const data = [
-    { label: "Jan", val: 15, note: "Kick-off" },
-    { label: "Feb", val: 35, note: "Research spike" },
-    { label: "Feb+", val: 22, note: "Stalemate" },
-    { label: "Mar", val: 55, note: "Wireframes" },
-    { label: "Mar+", val: 48, note: "Rework" },
-    { label: "Mar++", val: 72, note: "UI Build" },
-    { label: "Apr", val: 80, note: "Prototype" }
+    { label: "Jan", val: 15, note: "Planning" },
+    { label: "Feb", val: 35, note: "Research Materials & Concept Design" },
+    { label: "Feb+", val: 40, note: "2D concept design & 3D design start" },
+    { label: "Feb++", val: 22, note: "Standstill" },
+    { label: "Mar", val: 55, note: "Preliminary Design Stage" },
+    { label: "Mar+", val: 48, note: "Rework on 3D Design" },
+    { label: "Mar++", val: 72, note: "3D Detailed Design" },
+    { label: "Apr", val: 80, note: "Detailed Design Stage" },
+    { label: "Apr+", val: 75, note: "Fixing errors" },
+    { label: "Apr++", val: 84, note: "Errors Fixed" },
+    { label: "May", val: 80, note: "Redesigned Base" },
+    { label: "May+", val: 84, note: "Model Adjusted" },
+    { label: "May++", val: 80, note: "Fix Base Errors" },
+    { label: "May+++", val: 90, note: "Base Errors Fixed" },
+    { label: "May++++", val: 95, note: "Prototype" },
+    { label: "May+++++", val: 98, note: "All work in Repo" },
+    { label: "May++++++", val: 100, note: "Finish portfolio" }
   ];
 
   function draw() {
     const parent = canvas.parentElement;
-    canvas.width = Math.max(260, parent.clientWidth - 32);
-    canvas.height = Math.max(240, parent.clientHeight - 60);
+
+    const pointSpacing = 150;
+    const pad = { t: 30, r: 40, b: 35, l: 55 };
+
+    canvas.width = Math.max(
+      parent.clientWidth,
+      pad.l + pad.r + (data.length - 1) * pointSpacing
+    );
+
+    canvas.height = Math.max(260, parent.clientHeight - 20);
+
+    canvas.style.width = `${canvas.width}px`;
+    canvas.style.height = `${canvas.height}px`;
 
     const W = canvas.width;
     const H = canvas.height;
 
     ctx.clearRect(0, 0, W, H);
 
-    const pad = { t: 16, r: 12, b: 30, l: 36 };
-    const gW = W - pad.l - pad.r;
+    const gW = (data.length - 1) * pointSpacing;
     const gH = H - pad.t - pad.b;
-    const n = data.length;
 
     ctx.strokeStyle = "rgba(168,85,247,0.12)";
     ctx.lineWidth = 1;
 
     for (let i = 0; i <= 4; i++) {
       const y = pad.t + gH - (i / 4) * gH;
+
       ctx.beginPath();
       ctx.moveTo(pad.l, y);
       ctx.lineTo(pad.l + gW, y);
       ctx.stroke();
 
       ctx.fillStyle = "rgba(100,116,139,0.7)";
-      ctx.font = "8px Exo 2, sans-serif";
+      ctx.font = "10px Exo 2, sans-serif";
       ctx.textAlign = "right";
-      ctx.fillText(`${i * 25}%`, pad.l - 4, y + 3);
+      ctx.fillText(`${i * 25}%`, pad.l - 8, y + 3);
     }
 
+    const pts = data.map((d, i) => ({
+      x: pad.l + i * pointSpacing,
+      y: pad.t + gH - (d.val / 100) * gH
+    }));
+
     ctx.fillStyle = "rgba(100,116,139,0.8)";
-    ctx.font = "7px Exo 2, sans-serif";
+    ctx.font = "10px Exo 2, sans-serif";
     ctx.textAlign = "center";
 
     data.forEach((d, i) => {
-      const x = pad.l + (i / (n - 1)) * gW;
-      ctx.fillText(d.label, x, H - 4);
+      ctx.fillText(d.label, pts[i].x, H - 12);
     });
-
-    const pts = data.map((d, i) => ({
-      x: pad.l + (i / (n - 1)) * gW,
-      y: pad.t + gH - (d.val / 100) * gH
-    }));
 
     const fill = ctx.createLinearGradient(0, pad.t, 0, pad.t + gH);
     fill.addColorStop(0, "rgba(168,85,247,0.25)");
@@ -259,7 +298,9 @@ function setupProgressGraph() {
 
     ctx.beginPath();
     ctx.moveTo(pts[0].x, pad.t + gH);
+
     pts.forEach((p) => ctx.lineTo(p.x, p.y));
+
     ctx.lineTo(pts[pts.length - 1].x, pad.t + gH);
     ctx.closePath();
     ctx.fillStyle = fill;
@@ -267,7 +308,9 @@ function setupProgressGraph() {
 
     ctx.beginPath();
     ctx.moveTo(pts[0].x, pts[0].y);
+
     pts.forEach((p) => ctx.lineTo(p.x, p.y));
+
     ctx.strokeStyle = "rgba(168,85,247,0.9)";
     ctx.lineWidth = 2;
     ctx.shadowColor = "rgba(168,85,247,0.6)";
@@ -277,8 +320,10 @@ function setupProgressGraph() {
 
     pts.forEach((p, i) => {
       const isUp = i === 0 || data[i].val >= data[i - 1].val;
+
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+
       ctx.fillStyle = isUp ? "rgba(0,229,255,1)" : "rgba(251,191,36,1)";
       ctx.shadowColor = isUp ? "rgba(0,229,255,0.8)" : "rgba(251,191,36,0.8)";
       ctx.shadowBlur = 8;
@@ -286,10 +331,11 @@ function setupProgressGraph() {
       ctx.shadowBlur = 0;
 
       if (data[i].note) {
-        ctx.font = "6px Exo 2, sans-serif";
-        ctx.fillStyle = "rgba(148,163,184,0.7)";
+        ctx.font = "9px Exo 2, sans-serif";
+        ctx.fillStyle = "rgba(148,163,184,0.75)";
         ctx.textAlign = "center";
-        const offsetY = p.y < pad.t + 20 ? p.y + 12 : p.y - 8;
+
+        const offsetY = p.y < pad.t + 28 ? p.y + 16 : p.y - 12;
         ctx.fillText(data[i].note, p.x, offsetY);
       }
     });
@@ -299,9 +345,11 @@ function setupProgressGraph() {
   draw();
 }
 
-/* =========================
-   CHATBOT
-========================= */
+/* 
+==================================================================================
+Chatbot
+==================================================================================
+*/
 function setupChatbot() {
   const responses = {
     default: "I'm your project guide. Ask me about features, the Gantt chart, progress, or the project overview.",
@@ -382,9 +430,11 @@ function setupChatbot() {
   }, 600);
 }
 
-/* =========================
-   MERMAID GANTT
-========================= */
+/* 
+==================================================================================
+Gantt chart mermaid
+================================================================================== 
+*/
 function renderGanttChart() {
   const ganttContainer = document.getElementById("gantt-chart");
   if (!ganttContainer || typeof mermaid === "undefined") return;
@@ -459,16 +509,18 @@ gantt
       }
     });
 
-    mermaid.render("generated-gantt", ganttDefinition).then((result) => {
-      ganttContainer.innerHTML = result.svg;
-    }).catch(() => {
-      ganttContainer.innerHTML = `
-        <div class="feature-fallback">
-          <p><strong>Schedule summary:</strong></p>
-          <p>First semester workshops completed, group project active, weekly meetings ongoing, assignment due 15 May 2026.</p>
-        </div>
-      `;
-    });
+    mermaid.render("generated-gantt", ganttDefinition)
+      .then((result) => {
+        ganttContainer.innerHTML = result.svg;
+      })
+      .catch(() => {
+        ganttContainer.innerHTML = `
+          <div class="feature-fallback">
+            <p><strong>Schedule summary:</strong></p>
+            <p>First semester workshops completed, group project active, weekly meetings ongoing, assignment due 15 May 2026.</p>
+          </div>
+        `;
+      });
   } catch (error) {
     ganttContainer.innerHTML = `
       <div class="feature-fallback">
@@ -480,9 +532,11 @@ gantt
   }
 }
 
-/* =========================
-   START
-========================= */
+/* 
+==================================================================================
+Start when website running
+==================================================================================
+*/
 safeRun(() => {
   updateUKTime();
   window.setInterval(updateUKTime, 1000);

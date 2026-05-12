@@ -1,7 +1,16 @@
+/* 
+I dont know if this style is normal for commenting but I like it so I am using it!
+Plus it keeps me on track with each section seperated - Rach 
+==================================================================================
+Theme - Stores colors, glow effects (futuristic style), and reusable values
+==================================================================================
+*/
+
 :root {
   --bg-deep: #04060f;
   --bg-panel: #080d1a;
   --bg-card: #0c1225;
+
   --cyan: #00e5ff;
   --purple: #a855f7;
   --purple-dim: #6d28d9;
@@ -9,28 +18,38 @@
   --blue-glow: #1d4ed8;
   --yellow: #fbbf24;
   --green: #22d3ee;
+
   --text-primary: #e2e8f0;
   --text-muted: #64748b;
+
   --border: rgba(168,85,247,0.25);
+
   --glow-purple: 0 0 20px rgba(168,85,247,0.4);
   --glow-cyan: 0 0 20px rgba(0,229,255,0.4);
   --glow-blue: 0 0 15px rgba(59,130,246,0.35);
 }
 
+/* 
+==================================================================================
+Global reset - Removes default spacing and keeps sizing predictable
+==================================================================================
+*/
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  min-height: 100%;
   background: var(--bg-deep);
   color: var(--text-primary);
   font-family: "Exo 2", sans-serif;
   overflow-x: hidden;
 }
 
+/* CRT scanline overlay */
 body::before {
   content: "";
   position: fixed;
@@ -46,6 +65,7 @@ body::before {
   );
 }
 
+/* Hidden labels for accessibility */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -57,7 +77,11 @@ body::before {
   border: 0;
 }
 
-/* HEADER */
+/* 
+==================================================================================
+Header and navigation bar - Top bar, title, links, and beta badge
+==================================================================================
+*/
 header {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -128,34 +152,69 @@ nav a:focus {
   background: rgba(168,85,247,0.08);
 }
 
-/* MAIN GRID */
+/* =========================================================
+Main Dashboard:
+Top row = graph | chatbot | globe
+Bottom row =    log | gantt
+========================================================= */
 main {
-  display: grid;
-  /* splits to equal thirds */
-  grid-template-columns: 1fr 1fr 1fr; 
-  /* splits to equal halves */
-  grid-template-rows: 1fr 1fr;
+  
+display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 55fr) minmax(0, 45fr);
   gap: 1.2rem;
   padding: 1.2rem;
-  /* fixed height = no overflow */
   height: calc(100vh - 64px - 48px);
+  overflow: hidden;
   box-sizing: border-box;
 }
 
+/* Panel positions */
+#panel-graph {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+#panel-chatbot {
+  grid-column: 3 / span 2;
+  grid-row: 1;
+}
+
+#panel-earth {
+  grid-column: 5 / span 2;
+  grid-row: 1;
+}
+
+#panel-log {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+}
+
+#panel-gantt {
+  grid-column: 4 / span 3;
+  grid-row: 2;
+}
+
+/* 
+==================================================================================
+Shared panel style - Applies to every dashboard box
+==================================================================================
+*/
+
 .panel {
-  /* background: var(--bg-card);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1rem;
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column; */
+  flex-direction: column;
   min-height: 0;
   min-width: 0;
-  overflow: hidden;
 }
 
+/* Subtle panel glow overlay */
 .panel::before {
   content: "";
   position: absolute;
@@ -164,6 +223,7 @@ main {
   pointer-events: none;
 }
 
+/* Cyan corner detail */
 .panel::after {
   content: "";
   position: absolute;
@@ -187,6 +247,7 @@ main {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .panel-label::before {
@@ -204,100 +265,92 @@ main {
   50% { opacity: 0.3; }
 }
 
-/* GRID POSITIONS */
-#panel-graph {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-#panel-chatbot {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-#panel-earth {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-#panel-log {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-#panel-gantt {
-  grid-column: 2 / span 2;
-  grid-row: 2;
-}
-
-/* PANEL HEIGHTS */
-#panel-graph,
-#panel-earth,
-#panel-log,
-#panel-gantt
-#panel-chatbot {
-  min-height: 0;
-}
-
-#panel-chatbot {
-  min-height: 320px;
-}
-
-/* GRAPH */
+/* 
+==================================================================================
+Group progress graph panel
+==================================================================================
+*/
 #progress-canvas {
   flex: 1;
   width: 100%;
+  min-height: 0;
   border-radius: 4px;
-  min-height: 260px;
 }
 
-/* CHATBOT */
-.chatbot-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-  gap: 0.6rem;
-  min-height: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.chatbot-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.7rem;
-  width: 100%;
+.graph-scroll {
   flex: 1;
   min-height: 0;
-}
-
-.chat-responses {
-  /* flex: 1;
-  width: 100%; */
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
   scrollbar-width: thin;
   scrollbar-color: var(--purple) transparent;
-  min-height: 120px;
-  /* background: rgba(0,0,0,0.25);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.5rem; */
 }
 
+#progress-canvas {
+height: 100%;
+min-height: 100%;
+display: block;
+border-radius: 4px;
+}
+
+/* 
+==================================================================================
+Chatbot panel
+==================================================================================
+*/
+#panel-chatbot {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.chatbot-section {
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.section-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--purple);
+  text-align: center;
+  letter-spacing: 0.15em;
+  flex-shrink: 0;
+}
+
+.section-subtitle {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Main chatbot internal grid */
+.chatbot-container {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 190px minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  overflow: hidden;
+}
+
+/* Animated orb */
 .chatbot-circle {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 190px;
+  height: 190px;
+  justify-self: center;
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
-  margin-top: 1.2rem;
+  margin-top: 0.2rem;
 }
 
 .chatbot-circle:hover {
@@ -314,24 +367,24 @@ main {
 }
 
 .ring-1 {
-  width: 260px;
-  height: 260px;
+  width: 190px;
+  height: 190px;
   border-color: var(--purple) transparent var(--purple) transparent;
   animation: spin 4s linear infinite;
   box-shadow: 0 0 12px rgba(168,85,247,0.5);
 }
 
 .ring-2 {
-  width: 220px;
-  height: 220px;
+  width: 160px;
+  height: 160px;
   border-color: transparent var(--cyan) transparent var(--cyan);
   animation: spin 3s linear infinite reverse;
   box-shadow: 0 0 10px rgba(0,229,255,0.4);
 }
 
 .ring-3 {
-  width: 180px;
-  height: 180px;
+  width: 130px;
+  height: 130px;
   border-color: var(--blue) transparent var(--blue) transparent;
   border-width: 1.5px;
   animation: spin 6s linear infinite;
@@ -345,14 +398,22 @@ main {
 
 .inner-core {
   position: absolute;
-  width: 115px;
-  height: 115px;
+  width: 85px;
+  height: 85px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(168,85,247,0.9) 0%, rgba(59,130,246,0.6) 40%, rgba(0,229,255,0.3) 70%, transparent 100%);
-  box-shadow: 0 0 30px rgba(168,85,247,0.6), inset 0 0 20px rgba(0,229,255,0.3);
+  background: radial-gradient(
+    circle,
+    rgba(168,85,247,0.9) 0%,
+    rgba(59,130,246,0.6) 40%,
+    rgba(0,229,255,0.3) 70%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 30px rgba(168,85,247,0.6),
+    inset 0 0 20px rgba(0,229,255,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,6 +433,7 @@ main {
   50% { transform: scale(1.4); opacity: 0.7; }
 }
 
+/* Orbiting dots */
 .orbit-dots {
   position: absolute;
   inset: 0;
@@ -394,10 +456,16 @@ main {
 .dot-4 { animation: orbit1 3s linear infinite; animation-delay: -2.25s; }
 
 @keyframes orbit1 {
-  from { transform: rotate(0deg) translateX(110px) rotate(0deg) translate(-50%, -50%); }
-  to { transform: rotate(360deg) translateX(110px) rotate(-360deg) translate(-50%, -50%); }
+  from {
+    transform: rotate(0deg) translateX(82px) rotate(0deg) translate(-50%, -50%);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(82px) rotate(-360deg) translate(-50%, -50%);
+  }
 }
 
+/* Decorative orbit lines */
 .circling-lines {
   position: absolute;
   inset: 0;
@@ -411,18 +479,54 @@ main {
   border: 1px solid rgba(0,229,255,0.2);
 }
 
-.line-orbit-1 { width: 130px; height: 130px; transform: translate(-50%, -50%) rotateX(70deg); animation: tilt 8s linear infinite; }
-.line-orbit-2 { width: 150px; height: 150px; transform: translate(-50%, -50%) rotateX(70deg) rotateZ(60deg); animation: tilt 10s linear infinite reverse; }
-.line-orbit-3 { width: 170px; height: 170px; transform: translate(-50%, -50%) rotateX(70deg) rotateZ(120deg); animation: tilt 7s linear infinite; }
-.line-orbit-4 { width: 190px; height: 190px; transform: translate(-50%, -50%) rotateX(80deg) rotateZ(30deg); animation: tilt 9s linear infinite reverse; }
-.line-orbit-5 { width: 210px; height: 210px; transform: translate(-50%, -50%) rotateX(75deg) rotateZ(90deg); animation: tilt 6s linear infinite; }
-.line-orbit-6 { width: 230px; height: 230px; transform: translate(-50%, -50%) rotateX(65deg) rotateZ(150deg); animation: tilt 11s linear infinite reverse; }
+.line-orbit-1 {
+  width: 95px;
+  height: 95px;
+  transform: translate(-50%, -50%) rotateX(70deg);
+  animation: tilt 8s linear infinite;
+}
+
+.line-orbit-2 {
+  width: 110px;
+  height: 110px;
+  transform: translate(-50%, -50%) rotateX(70deg) rotateZ(60deg);
+  animation: tilt 10s linear infinite reverse;
+}
+
+.line-orbit-3 {
+  width: 125px;
+  height: 125px;
+  transform: translate(-50%, -50%) rotateX(70deg) rotateZ(120deg);
+  animation: tilt 7s linear infinite;
+}
+
+.line-orbit-4 {
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%) rotateX(80deg) rotateZ(30deg);
+  animation: tilt 9s linear infinite reverse;
+}
+
+.line-orbit-5 {
+  width: 155px;
+  height: 155px;
+  transform: translate(-50%, -50%) rotateX(75deg) rotateZ(90deg);
+  animation: tilt 6s linear infinite;
+}
+
+.line-orbit-6 {
+  width: 170px;
+  height: 170px;
+  transform: translate(-50%, -50%) rotateX(65deg) rotateZ(150deg);
+  animation: tilt 11s linear infinite reverse;
+}
 
 @keyframes tilt {
   from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); }
   to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); }
 }
 
+/* Orb hover boost */
 .chatbot-circle:hover .ring-1 {
   animation-duration: 1.5s;
   box-shadow: 0 0 35px rgba(168,85,247,0.9);
@@ -439,11 +543,72 @@ main {
 }
 
 .chatbot-circle:hover .inner-core {
-  box-shadow: 0 0 50px rgba(168,85,247,0.9), inset 0 0 30px rgba(0,229,255,0.5);
+  box-shadow:
+    0 0 50px rgba(168,85,247,0.9),
+    inset 0 0 30px rgba(0,229,255,0.5);
 }
 
+/* Scrollable chatbot responses */
+.chat-responses {
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple) transparent;
+}
+
+.chat-msg {
+  flex-shrink: 0;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  animation: msgIn 0.3s ease;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-msg.user {
+  background: rgba(109,40,217,0.2);
+  border: 1px solid rgba(168,85,247,0.3);
+  align-self: flex-end;
+  max-width: 85%;
+  color: var(--text-primary);
+}
+
+.chat-msg.bot {
+  background: rgba(0,229,255,0.06);
+  border: 1px solid rgba(0,229,255,0.2);
+  align-self: flex-start;
+  max-width: 92%;
+  color: var(--cyan);
+}
+
+.chat-msg.bot .bot-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--purple);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Chatbot input fixed at the bottom of chatbot panel */
 .chatbot-input-container {
   width: 100%;
+  min-height: 0;
 }
 
 .input-frame {
@@ -484,62 +649,16 @@ main {
   background: var(--purple);
 }
 
-.chat-msg {
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  animation: msgIn 0.3s ease;
-}
-
-@keyframes msgIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.chat-msg.user {
-  background: rgba(109,40,217,0.2);
-  border: 1px solid rgba(168,85,247,0.3);
-  align-self: flex-end;
-  max-width: 85%;
-  color: var(--text-primary);
-}
-
-.chat-msg.bot {
-  background: rgba(0,229,255,0.06);
-  border: 1px solid rgba(0,229,255,0.2);
-  align-self: flex-start;
-  max-width: 92%;
-  color: var(--cyan);
-}
-
-.chat-msg.bot .bot-label {
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.55rem;
-  letter-spacing: 0.15em;
-  color: var(--purple);
-  margin-bottom: 0.3rem;
-  display: block;
-}
-
-.section-title {
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--purple);
-  text-align: center;
-  letter-spacing: 0.15em;
-}
-
-.section-subtitle {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-/* EARTH */
+/* 
+==================================================================================
+Earth panel with uk highlight location - shows location globally of project.
+Was done just for fun effects.
+With Holographic globe and live UK clock
+==================================================================================
+*/
 .earth-wrapper {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -549,13 +668,14 @@ main {
 
 .earth-scene {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
 }
 
 .earth-globe {
-  width: 140px;
-  height: 140px;
+  width: 210px;
+  height: 210px;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -598,15 +718,15 @@ main {
 }
 
 .holo-r1 {
-  width: 156px;
-  height: 156px;
+  width: 230px;
+  height: 230px;
   transform: translate(-50%, -50%) rotateX(75deg);
   animation: holoSpin 12s linear infinite;
 }
 
 .holo-r2 {
-  width: 170px;
-  height: 170px;
+  width: 250px;
+  height: 250px;
   transform: translate(-50%, -50%) rotateX(75deg) rotateZ(60deg);
   animation: holoSpin 16s linear infinite reverse;
   border-color: rgba(168,85,247,0.2);
@@ -627,11 +747,12 @@ main {
 
 .earth-time {
   text-align: center;
+  flex-shrink: 0;
 }
 
 #uk-time {
   font-family: "Orbitron", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--cyan);
   text-shadow: var(--glow-cyan);
@@ -640,7 +761,7 @@ main {
 
 #uk-date {
   font-family: "Exo 2", sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 0.15em;
 }
@@ -654,13 +775,18 @@ main {
   margin-top: 0.3rem;
 }
 
-/* PROGRESS HISTORY */
+/* 
+==================================================================================
+Personal progress log panel
+================================================================================== 
+*/
 .history-current {
   padding: 0.9rem;
   margin-bottom: 1rem;
   border: 1px solid rgba(0,229,255,0.18);
   border-radius: 6px;
   background: rgba(0,0,0,0.25);
+  flex-shrink: 0;
 }
 
 .history-current p {
@@ -725,7 +851,11 @@ main {
   color: var(--text-primary);
 }
 
-/* MERMAID GANTT */
+/* 
+==================================================================================
+Group Gantt chart - Mermaid
+==================================================================================
+*/
 .gantt-chart-wrap {
   flex: 1;
   min-height: 0;
@@ -736,7 +866,7 @@ main {
   width: 100%;
   height: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: rgba(0,0,0,0.22);
@@ -758,7 +888,11 @@ main {
   font-family: "Exo 2", sans-serif !important;
 }
 
-/* FALLBACK */
+/* 
+==================================================================================
+Fallback boxes - for when JavaScript is unavailable to show project.
+==================================================================================
+*/
 .feature-fallback {
   border: 1px solid var(--border);
   background: rgba(0,0,0,0.25);
@@ -770,16 +904,20 @@ main {
   margin-top: 0.5rem;
 }
 
-/* FOOTER */
+/* 
+==================================================================================
+Footer - Project credits.
+================================================================================== 
+*/
 footer {
-  height: 48px;
+  min-height: 48px;
   background: rgba(8,13,26,0.95);
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 0 2rem;
+  padding: 0.75rem 2rem;
 }
 
 .footer-text {
@@ -794,11 +932,27 @@ footer {
   color: var(--purple);
 }
 
-/* RESPONSIVE */
+/* 
+==================================================================================
+Responsive design - allows shortening of screens (website panels minimised).
+==================================================================================
+*/
 @media (max-width: 1200px) {
+  header {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  nav {
+    justify-content: flex-start;
+  }
+
   main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 360px 430px 360px;
+    min-height: auto;
   }
 
   #panel-graph {
@@ -814,7 +968,6 @@ footer {
   #panel-chatbot {
     grid-column: 1 / span 2;
     grid-row: 2;
-    min-height: auto;
   }
 
   #panel-log {
@@ -827,29 +980,22 @@ footer {
     grid-row: 3;
   }
 
-  header {
-    grid-template-columns: 1fr;
-    height: auto;
-    gap: 0.8rem;
-    padding: 1rem;
-  }
-
-  nav {
-    justify-content: flex-start;
-  }
-
   footer {
-    height: auto;
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
   }
 }
 
+/* 
+==================================================================================
+Responsive design for mobiles.
+==================================================================================
+*/
 @media (max-width: 760px) {
   main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     height: auto;
   }
 
@@ -859,38 +1005,68 @@ footer {
   #panel-log,
   #panel-gantt {
     grid-column: 1;
-    min-height: auto;
+    min-height: 340px;
   }
 
-  #panel-graph { grid-column: 1; grid-row: 1; }
-  #panel-chatbot { grid-column: 1 / span 2; grid-row: 2; }
-  #panel-earth { grid-column: 2; grid-row: 1; }
-  #panel-log { grid-column: 1; grid-row: 3; }
-  #panel-gantt { grid-column: 2; grid-row: 3; }
+  #panel-graph {
+    grid-row: 1;
+  }
+
+  #panel-chatbot {
+    grid-row: 2;
+    min-height: 430px;
+  }
+
+  #panel-earth {
+    grid-row: 3;
+  }
+
+  #panel-log {
+    grid-row: 4;
+  }
+
+  #panel-gantt {
+    grid-row: 5;
+  }
 
   nav {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .chatbot-circle {
-    width: 220px;
-    height: 220px;
+  .chatbot-container {
+    grid-template-rows: 180px minmax(0, 1fr) auto;
   }
 
-  .ring-1 { width: 220px; height: 220px; }
-  .ring-2 { width: 185px; height: 185px; }
-  .ring-3 { width: 150px; height: 150px; }
+  .chatbot-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ring-1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ring-2 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .ring-3 {
+    width: 120px;
+    height: 120px;
+  }
 
   .inner-core {
-    width: 98px;
-    height: 98px;
+    width: 80px;
+    height: 80px;
   }
 
-  .line-orbit-1 { width: 112px; height: 112px; }
-  .line-orbit-2 { width: 130px; height: 130px; }
-  .line-orbit-3 { width: 148px; height: 148px; }
-  .line-orbit-4 { width: 166px; height: 166px; }
-  .line-orbit-5 { width: 184px; height: 184px; }
-  .line-orbit-6 { width: 202px; height: 202px; }
+  .line-orbit-1 { width: 90px; height: 90px; }
+  .line-orbit-2 { width: 105px; height: 105px; }
+  .line-orbit-3 { width: 120px; height: 120px; }
+  .line-orbit-4 { width: 135px; height: 135px; }
+  .line-orbit-5 { width: 150px; height: 150px; }
+  .line-orbit-6 { width: 165px; height: 165px; }
 }
