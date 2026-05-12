@@ -249,7 +249,7 @@ function setupProgressGraph() {
       pad.l + pad.r + (data.length - 1) * pointSpacing
     );
 
-    canvas.height = Math.max(260, parent.clientHeight - 20);
+    canvas.height = parent.clientHeight;
 
     canvas.style.width = `${canvas.width}px`;
     canvas.style.height = `${canvas.height}px`;
