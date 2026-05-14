@@ -71,6 +71,43 @@ Standard setting for content pages in navigation bar (not dashboard)
 
 /*
 ==================================================================================
+Research blocks to add images and references.
+==================================================================================
+*/
+.research-block {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.research-text {
+  flex: 1 1 600px;
+}
+
+.research-figure {
+  flex: 0 0 320px;
+  margin: 0;
+}
+
+.research-figure img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+  box-shadow: var(--glow-blue);
+}
+
+.research-figure figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/*
+==================================================================================
 Global reset - Removes default spacing and keeps sizing predictable
 ==================================================================================
 */
@@ -1109,4 +1146,67 @@ Responsive design for mobiles.
   .line-orbit-4 { width: 135px; height: 135px; }
   .line-orbit-5 { width: 150px; height: 150px; }
   .line-orbit-6 { width: 165px; height: 165px; }
+}
+
+/* 
+==================================================================================
+Budget spreadsheet table
+==================================================================================
+*/
+.budget-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.2);
+}
+
+.budget-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.78;
+}
+
+.budget-table th {
+  background: rgba(168,85,247,0.12);
+  color: var(--cyan);
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  padding: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.budget-table td {
+  padding: 0.85rem;
+  border-bottom: 1px solid rgba(225,225,225,0.05);
+  color: var(--text-primary);
+}
+
+.budget-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.budget-table tbody tr:hover {
+  background:rgba(0,229,255,0.05);
+}
+
+.budget-table tfoot td {
+  background: rgba(0,0,0,0.35);
+  font-weight: 700;
+  color: var(--yellow);
+  border-top: 1px solid var(--border);
+}
+
+.paid {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.pending {
+  color: #fbbf24;
+  font-weight: 600;
 }
