@@ -122,6 +122,8 @@
             <p>This early decision established a clear visual direction for the project whilst also providing opportunities to investivate a range of digital and practical design and manufacting development processes.</p>
             <br>
             <h3>6.1. Blender - Computer Aided Design - Used.</h3>
+            <p>Blender is a free open-sourced Computer Aided Design (commonly called CAD), software platform that is used in modelling, animation, rendering and video editing. It's the software is widely utilised by artists, hobbists, designers, animators, engineers and some games development due to its accesibility and variety of capabilities. Blender is capable of helping designers made 3D models, visual effects and also video animations.</p>
+            <br>
             <p>The group decided to utilise Blender as the primary software for developing the external skull and spine structure, and overall aesthetic design of the product. The software was selected due to its ability to produce highly detailed organic surface modelling, which was considered essential for achieving a more realistic biomechanical horror appearance. Compared to more engineering focused CAD, (Computer Aided Design), platforms, Blender provided greater flexibility when producing complex surface geometry, scuplted forms, and refined visual detailing.</p>
             <br>
             <p>With the use of Blender the group was able to rapidly iterate design variations, duplicate backups, adjust proportions and refine surface features whilst decimating the polycount for easier less confusing prints. This improved efficency during the Preliminary Design Phase. Whilst the group had access to AutoCAD and Fusion 360 platforms, Blender provided a more artistic and functional method of design allowing extra detailing between lines, verticies and sections, to create a more realistic model.</p>
@@ -145,97 +147,438 @@
                 </ul>
             <br>
             <h3>6.2. 3D scanning - Used.</h3>
-            <p></p>
+            <p>3D scanning is a digital process of using computer vision to capture, shape dimensions and appearance of physical objects or environments to make a precise digital replica. Unlike traditional methods with 2D photography which can only capture height and width , 3D scanning is capable of recording depth, surface detail and color as well. The process utilises sensors, lasers and structured light systems to measure distances and surface geometry. This information is then processed through computer vision software, which converts captured data points into polygon mesh or digital 3D models.</p>
             <br>
-            <h3>6.3. Fusion 360 - Computer Aided Design - Used</h3>
-            <p>
-
-            </p>
+            <p>The decision to ultilise the 3D scanning resources was primarily influenced by project time constraints and efficency. By scanning an existing hgihly detailed ornament, the group was able to rapidly create a complex base model which significantly reduced modelling time required for manual modelling. This approach accelerated the development process while still allowing detailed surface geometry.</p>
+            <br>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Quick capture of object geometry and convert it into a digital 3D model. Saving time compared the traditional manual approaches within Computer Aided Design software. Reduces development time especially early on the project development.</li>
+                    <li>Effective shape transistioning: 3D scanning is effective when capturing irregular angles, detail and surface proportions that in traditional CAD methods would not only be difficult to achieve but would be more time consuming.</li>
+                    <li>Supports reverse engineering: existing components or surfaces can be scanned and analysed for redesign purposes, modification or reproduction.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Poor Accuracy on details that have small depth or over a certain angled corner.</li>
+                    <li>Poor Accuracy on reflective surfaces due to the laser beams bouncing back creating uneven or disproportional/ distorted surface geometry. Additional surface alterations and lighting conditions can aid this however, not all models will come out perfecly dependant on how much reflection was on the model. A good example of this would be a NAMCO light gun from the PlayStation 1, that a student brought in for the 3D scanning workshop throughout out module sessions. 99.8% of the light gun scanned with no difficutlies however when it came to the tip of the gun where the light beam is present and a reflective screen over it, you can see the 3d scan struggled and some deterioration is found in the main model. </li>
+                    <figure class="research-figure">
+                        <img src="images/prints/reflective_issues_3d_scanning.png" alt="NAMCO light gun 3D scan.">
+                            <figcaption>
+                                NAMCO light gun 3D scan with deteriorating geometry on reflective nozzle.
+                            </figcaption>
+                    </figure>
+                    <li>Post-Processing Requirements: Scanned models usually contain unwanted geometry. Lines that do not conenct to other verticies or random veticies around the model. Holes that need to be filled. Or surface irregularities. This requires another CAD platform suitable to handle 3D scanning converted digital models, and delete, cut and reshape the model to the users needs. This can be time consuming the more detailed the model is and the more geometry and polycounts a user has to work with.</li>
+                </ul>
+            <br>
+            <h3>6.3. Autodesk Fusion 360 - Computer Aided Design - Used</h3>
+                <p>The decision to use Autodesk Fusion 360 was influenced by its ability to provide precise parametric modelling tools, mechanical assembly features and simulation capabilities for mechanical assembly features. Autodesk Fusion 360 has commonly been used in CAD component production as it provides precise measurements, capabilities to join connective components and simulate to check all parts of the components work in unison.</p>
+                <br>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Precision and accuracy: Autodesk 360 has the ability to produce high accurate specifications and high quality components. It has many tools that can break down a model to its dimensions, tolerances and assembly relationships which can be precisely controlled to customise, adjust and alter pre-existing and post design mechanical components.</li>
+                    <li>Parametric modelling: This software allows parametric workflow, (parameters like dimensions, tolerances and constraints), which means it can allow dimensions and features to be modified without having to change the whole entire model or start from the beginning.</li>
+                    <li>Professional engineering manufaturing: Fusion 360 is effective at making specific detailed documentation for engineering mechanical blueprints. Making it widely used alongside many other AutoCAD software in engineering design.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages& limitations/h4>
+                <ul>
+                    <li>Difficulties in making a detailed model: Although fusion 360 supports surface modelling, for models that require more detail users would struggle as it is not specialised for scuplting or detailing certain design features a more detailed model would require.</li>
+                    <li>Not beginner friendly: Although Fusion 360 is less complex than a lot of CAD software platforms, users still need a technical understanding to effectively utilise its complex, advanced features.</li>
+                    <li>Performance limitations: As complexity of a model increases, software performance may drop due to large numbers of detailed surfaces or moving components. High polygon counts and complex assemblies can increase rendering and processing times which can make the software start to delay/lag.</li>
+                </ul>
             <br>
             <h3>6.4. Motion Capture - Unused.</h3>
-            <p>
-                  
-            </p>
+            <p>Commonly reffered to as MoCap, motion capture is a process where a digital recording is used to capture and translate real-world human, animal or object movements into digital animation data. The process involves cameras stationed around a target area (studio floor), infered tracking systems, reflective markers and sensor-based suits. The captured data is then applied to a digital model using animation techniques, putting bone structures internally into the model and then using playback features. Commonly motion capture is used wihtin robotics, animation studios, games development, virtual advertisements or virtual environment entertainment.</p>
+            <br>
+            <p>The group had decided that MoCap was not really the direction the project should go due to the fact only two coordinated points of movement would be used and for small-scale movement it was unneccessery towards what we needed. It would have added more time constraints, more complexity and would not have been flexible to the projects testing needs.</p>
+            <br>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Realistic movement production: One of its major highlights is to get realistic real-time movement sequences which can replace older traditional animation techniques that are time consuming, making project development much more entertaining and reducing development time.</li>
+                    <li>Efficient animation workflow: Animations are much smoother to work with due to preanimated gestures and sequence based workflow. Instead of individually creating movements frame by frame you are working with real-time recorded actions to utilise into models.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Expensive: A professional MoCap setup would require not only a studio, requiring sensors, cameras and markers but the individual wearable bodysuits alone are expensive. This makes it difficult to invest with smaller-scale projects especially when you have to consider environmental controlls.</li>
+                    <li>Complex data processing: After a MoCap session often there is a complex process of cleaning up captures and putting them into sequences. This can be time consuming and requires some techical knowledge or background to understand all of the tools required for the process.</li>
+                    <li>For simple mechanisms there is limited relevance for use of MoCap. Especially when it would be much easier and cheaper to use an open source platform or AutoCAD.</li>
+                    <li>Reduced flexability: Many MoCap systems require certain environmental conditions, lighting and controlled capture spaces. This can heavily reduce flexibility especially for small-scale projects during texting and production.</li>
+                </ul>
             <br>
             <h3>6.5. Haptic Scuplting - Unused.</h3>
-            <p>
-
-            </p>
+            <p>Haptic Scuplting is digital modelling process that combines 3D sculpting software with force-feedback (touch) to simulate physical sensations of sculpting as though you were actually drawing onto a surface. Unlike traditional CAD platforms that rely on geometric and parametric modelling, haptic sculpting allows designers to manipulate digital surfaces in a more tactile and artistic manner. This can replicate working with clay for example. The technology is commonly used within entertainment, character sculpting, creature development detailling, and concept art.</p>
+            <br>
+            <p>It was decided very early on the project that the haptic pen was not a route the project needed to go down. Mainly because it takes background knowledge on how to work its complex array of tools but also because it requires a more artistic hand to sculpt, which non of the team members had mentioned they felt they comfortably had.</p>
+            <br>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Natural workflow: similar to designers benefitting from tablets to do digital art designs, the haptic tool offers that same realistic workflow as though you are working with pen and paper, making it more natural for someone with artistic talents to take advantage of.</li>
+                    <li>High surface detail: With any sculpting platforms comes with high detail, perfect for designing or modelling creatures for example. Facial appearences can be detailed, like rough skin surface textures for example.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <p>The main disadvantage the haptic pen concerns is that a high artistic skill is required to create and sculpt models with high-quality results. This also requires someone with sculptural understanding, anatomy knowledge and practice with artistic digital platforms.</p>
+                <p>Extreme limited mechanical precision.</p>
+                <p>Expensive Hardware and Software: for independant projects the hardware and software can be costly, and in Educational environments they are hard to find funded. Making them less flexible to work with development process and too expensive to learn.</p>
+                <figure class="research-figure">
+                    <img src="images/hapticPen.jpg" alt="Module Haptic Session Class Design.">
+                        <figcaption>
+                            Above is a picture to show the difficulties of sculpting without artistic background - Taken from one of the module session workshops.
+                        </figcaption>
+                </figure>
             <br>
             <h2>Production</h2>
             <h3>6.6. 3D Printing - Used.</h3>
-            <p>
-
-            </p>
+            <p> 3D printing has become very popular for its ease of access by many CAD and slicer software platforms, and for prototyping affordability.It is a production method that creates objects layer by layer from a 3D digital model, often with plastic filament however you can also get clay and metal. It has widely become useful in prototyping artefacts for design, engineering, healthcare, architecture and entertainment. Even now NASA are experimenting with 3D printed tools being manufactured in space to reduce weight on launch. https://www.nasa.gov/missions/station/iss-research/3d-printing-saving-weight-and-space-at-launch/</p>
+            <br>
+            <p>3D printing was one of the primary manufacturing methods used for the Soapamorph due to budget constraints, lack of resources, ease of use and also ease of learning and experience. It also offered many practical uses such as print in place function for more complex areas of the design, printing supports so that the model had a smoother surface start-point layout and its autonomous features allowed the project to be produced whilst focusing on another part of the projects development stages.</p>
+            <br>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Autonomous production.</li>
+                    <li>Accessibilty: 3D printers can handle models from almost all CAD software platforms, making it easier to use and accessible.</li>
+                    <li>Low machine costs: unlike processes like injection moulding which can be expensive based on environmental needs, tools and machine upkeep, additive manufacturing (3D printing) doesn't require expensive moulds or tools during production. It also does not require a complete change like injection moulding where you have to change designs and tools around, which can be time consuming, 3D printing allows digital SD card input to keep files on and can be printed at ease anytime without having to change over complex tools.</li>
+                    <li>Components can be modified easier digitally and inputed into the machine whilst keeping multiple files on the same SD card. Meaning you can keep multiple designs in one place and also backups of changed files.</li>
+                    <li>Compared to CNC processing, additive manufacturing uses less waste as it prints material where required. Making it slightly environmentally friendly in waste reduction.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Visible seam layers: 3D printers print layer by layer so the layers are visible, most of all designers have to arrange the print settings often especially when they are switching material of filament. There is no way of getting rid of the seams but there are methods to make the seams less visible or noticible for example, the start seam that can show a horizontal line down a model, but settings can be changed if the model has an inner area for the seam to start there instead making the outside less noticable.</li>
+                    <li>Limited material performance: certain materials lack the ability to withstand heat, UV rays, water, chemical and impact resistance. Depending on what a prototype is needed for certain requirements might not be met in one material.</li>
+                    <li>Poor Geometry in models can cause prints to keep printing unchecked causing massive wastage of materials.</li>
+                    <li>Slow production method: Although it provides autonomousy, to get prints to come out well most machines need to start off with a speed of 10-30% depending on detail, and after a few layers the speed can increase. This makes this production method time consuming, often taking days when it comes to larger models.</li>
+                    <li>Structural weaknesses between layers can provide weak gaps when impacts can bounce energy through shattering the polymer bonds, making it less likely to have a long shelf life.</li>
+                </ul>
             <br>
             <h3>6.7. Resin - Unused.</h3>
-            <p>
-
-            </p>
+            <p>Resin production and manufacturing is a process used to create durable, lightweight and highly detailed models or components through the use of moulds or dip forming structures. These processes are highly used in Automotive, Aerospace, Prop/Movie Production, Animatronics, and theme park entertainment industries. This is because of the ability to produce detailed, high-quality surface finishes.</p>
+            <br>
+            <p>The soapamorph project initially explored the possibility of Resin as it provided a method to fully utilise high-design quality, and its ability for transparent colors to give a more alien, slime, visual effect. However, because of how expensive resin can be, especially larger scale like this project, the group looked to alternative production methods to allow bugetting for the entire project not just a singular component or piece.</p>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>High-Surface Quality: This is a major advantage of Resin production, as Resin casting has the ability to achieve fine detail reproduction without compromising quality surface finishes. Unlike 3D printing where you can see seams, Resin is a form of mould casting, or dip casting and UV lighting which is what helps give it a smooth finish.</li>
+                    <li>Improved material ability: Resin can provide a more durable material that can be water resistant, and provide structural strength as it is not a form of grid printing such as 3D printing. Because of its stronger material capabilities it is able to have a longer shelf life compared.</li>
+                    <li>Lightweight structures.</li>
+                    <li>Suitable for batch production methods.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Expense: Due to moulds, Tooling, chemicals, and design revisions between prints.</li>
+                    <li>Resin Ratio Complexity: Whether working with moulds or dip machines, the ratio between how much hardener per how much Resin is mixed together can complicate prints, UV solidify techniques, or DIY dry techniques. If the Ratio is off, it can cause a failed model sometimes instantly but most times months later when deterioration starts to form. The ratio can add more complexity in the form of the side of model or the purpose of the model. DIY hobbists can use a ratio of one part equal resin and one part equal hardener. More industrial production methods may include two part equal resin for every one part hardener. Some specialised resin models can involve 3:1 Ratios up to 5:1. Each Ratio is determined by the specific product needs.</li>
+                    <li>Material Waste: Resin methods can generate significant waste during trimming, support removal and failed casting attempts.</li>
+                    <li>Health and Safety Concerns: Resin produces more airborne particles during the manufacturing process which are toxic to respiratory systems. External shelters are needed which can cost extra, or on larger industrial machines a filtering system is required. Long term exposure can cause health risks and in some cases long-term respiratory diseases.</li>
+                </ul>
             <br>
             <h3>6.8. Composite Production - Silicone - Unused.</h3>
-            <p>
-
-            </p>
+            <p>Silicone manufacturing techniques used to make durable and lightweight components without sacrificing high detail. It is commonly used in animatronics, film and prop production, prosthetics, aerospace, automotive engineering and theme park entertainment industries. Often used when products require a more realistic appeal, or lightweight covering. Silicone is a synthetic polymer that is widely known for its flexibility, hydrophobic, chemical resitance and durability capabilities.</p>
+            <br>
+            <p>The production process involves a sacrificial model or preset mould that represents the final ideal shape. Liquid silicone is mixed with curing agents before being poured or brushed into the mould cavity. After curing the silicone is removed, trimmed and undergoes a finishing process.</p>
+            <br>
+            <p>During the very early stages of planning, the soapamorph project was intended to have a silicone skin, for hygiene requirements (ease to keep clean), and that the Artefact needed to be Water Resistant, Chemical Resistant and finally heat resistant due to the environment it was to be installed in. However, due to expense, resource limitations and time constraints this was soon abandoned for PP (Polypropylene) 3D printing methods instead.</p>
+            <br>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Water and chemical resistance: Silicone has strong hydrophobic and chemical-resistant properties, making them highly suitable for exposure to environments with high exposure and humid weather.</li>
+                    <li>Realistic apperance: Detailed models do not lose their details during process as it provides a high quality surface finish.</li>
+                    <li>Improved durability -> impact resistance -> longer shelf life.</li>
+                    <li>Lightweight.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Complex manufacturing processes: Silicone manufacturing takes multiple stages including, mould making, curing, trimming and finishing. This increases production time length.</li>
+                    <li>Difficult deisng changes: Unline 3D printing, modifying components requires a complete new mould to be produced and then extending both time and expenses into changes.</li>
+                    <li>Safety Requirements: The need for specialised tools and ventilation systems as the process can produce harmful airborne particles.</li>
+                    <li>Increased material waste: Due to a batch need to be used as soon as possible after it is opened, storage can cause liquid silicone mixtures to get old and unusable. Increased costs at failed casts, trimming and mould production. </li>
+                </ul>
             <br>
             <h3>6.9. Laser Cutting - Unused.</h3>
-            <p>
-
-            </p>
+            <p>Laser cutting is a process of using concentrated high-powered laser beams to cut, engrave or etch materials with high precision. Widely used in engineering, architecture, product design and fabrication due to its speed, ease of use, accuracy and autonomous capabilities.</p>
+            <br>
+            <p>Materials available to the project involved wood, acrylic, cardboard, paper, fabric and authorised metals provided on site. At the very beginning laser cutting was a consideration, unfortunately due to complications with models and adjustment needs, this project became time constricted and instead laser cutting was dismissed from the manufacturing schedule for wood working techniques.</p>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>High Precision</li>
+                    <li>Low material waste: laser can be calibrated to start on one end of the material and carry out its program.</li>
+                    <li>Cost effective.</li>
+                </ul>
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Limited to flat surfaces.</li>
+                    <li>Risk of burn marks and edge discoloration dependant on material tolerance.</li>
+                    <li>Material thickness limitations dependant on machine power.</li>
+                    <li>Specialised tools needed to rotate material for rounded or curved engravings.</li>
+                    <li>Fire hazard: Technical background knowledge needed to operate industrial machines due to complexities in material structure, tolerances and air filtering requirements.</li>
+                </ul>    
             <br>
             <h2>Bonus Production</h2>
             <h3>Woodworking.</h3>
-            <p>
-
-            </p>
+            <p>Woodworking is a traditional method of production involving shaping, cutting, joining and finishing of timber based materials. Despite its age woodworking still continues to be a massive manufacturing method commonly in furniture, architecture, construction, and prototype product development.</p>
+            <br>
+            <p>This type of manufacturing was a bonus added onto the project for the base design. Due to laser cutting being inaccesible under the time and budget constraints, a prototype wooden frame was cut and assembled, ready to be coated in wood oil to help with water resistance. Future manufacturing would stick however with laser cutting for fine precision and speed.</p>
+            <h4>Advantages</h4>
+                <ul>
+                    <li>Full control of assembly.</li>
+                    <li>Test parts before permanent assembly.</li>
+                    <li>Structural strength.</li>
+                    <li>Cheap and simple tool requirements.</li>
+                    <li>Simple work space required - Not necessery for a lab or workshop meaning time is more flexible around needs.</li>
+                    <li>Environmentally more sustainable, low fumes, longer shelf life, recycable properties.</li>
+                </ul>    
+            <br>
+            <h4>Disadvantages & limitations</h4>
+                <ul>
+                    <li>Moisture exposure can cause it to mould. Requires coating with wood oil for water resistance.</li>
+                    <li>Surface finishing requirements for longer lasting.</li>
+                    <li>Lower precision compared to autonomous cutting.</li>
+                    <li>Assembly joints/ nails measured and additonal elements to help keep in place such as rawplugs etc...</li>
+                </ul>
         </section>
 
         <section class="about-section panel">
             <div class="panel-label"><h1>7.Materials Research</h1></div>
             <h2>Material Goals.</h2>
-            <p>
+                <p>This project has ideal requirements for the properties of the materials used.</p>
 
-            </p>
+                <h3>Material Science Breakdown</h3>
+                Must have properties:
+                    <ul>
+                        <li>Constraint 1 - Hydrophobic (good, excellent - water & steam).</li>
+                        <li>Constraint 2 - Chemical Resistance (fair, good - soap).</li>
+                    </ul>
+                    <br>
+                <h3>Objective Limit:</h3>
+                    <ul>
+                        <li>Minimise Cost/ Cost efficient.</li>
+                    </ul>
 
+                <figure class="research-figure">
+                    <img src="images/edupack/Alkilis - withoutRecycling.png" alt="Edupack Materials Properties Graph without recycling">
+                    <img src="images/edupack/Alkilis - withRecycling.png" alt="Edupack Materials Properties Graph with recycling">
+                        <figcaption>
+                            Above is a picture to show different low cost materials that are chemical resistant(poor,good) without recycling capabilities. In comparison to ones with recycling eco capabilities. The resources available to this project have been highlighted. Materials that are available that share the constraint requirements are in black font, whereas those available that don't meet the required constraints are greyed out.
+                        </figcaption>
+                </figure>
+                <br>
+                <figure class="research-figure">
+                    <img src="images/edupack/head, jaw-before recycling.png" alt="Edupack Materials Properties Graph without recycling">
+                    <img src="images/edupack/head,jaw - WithRecycling limit.png" alt="Edupack Materials Properties Graph with recycling">
+                        <figcaption>
+                            Above is a picture to show different low cost materials that are chemical resistant(poor,good) without recycling capabilities. In comparison to ones with recycling eco capabilities. The resources available to this project have been highlighted. Materials that are available that share the constraint requirements are in black font, whereas those available that don't meet the required constraints are greyed out.
+                        </figcaption>
+                </figure>
+                <br>
+            <p>As can be seen on the graphs above, with or without recycling considerations the best printing material used for this project would be PP (Polypropylene) based on its affordability, its water resistance properties and its chemical resistance to low Alkilis such as soap.</p>
+            <br>
             <h2>Materials Available to the Project - Printing.</h2>
             <p>The project focused entirely on printing methods due to complications with models such as constant errors needing to be adjusted and postponing time of production, availability issues with certain labs and limited resources available.</p>
+            <br>
             <h3>Silicone.</h3>
-            <p>
-
-            </p>
+            <p>Polysiloxane polymer - (-Si-O-Si)n</p>
+            <p>Silicon - oxygen chain.</p>
+            <br>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Hydrophobic</li>
+                    <li>Flexible/elastic</li>
+                    <li>High temperature resistance</li>
+                    <li>Chemically stable</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Expensive</li>
+                    <li>Tears easier than thermoplastics</li>
+                    <li>Harder to recycle</li>
+                    <li>Can swell when exposed to certain solvents(oil)</li>
+                    <li>Produces airborne fumes that can be hazardous to health.</li>
+                </ul>
+            <br>
 
             <h3>TPU.</h3>
-            <p>
+            <p>Thermoplastic Polyurethane</p>
+            <br>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Tough.</li>
+                    <li>Abrasion resistant.</li>
+                    <li>Flexible.</li>
+                    <li>Good impact resistance.</li>
+                    <li>Tear resistance.</li>
+                    <li>Solvant resistance to oils.</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Expensive.</li>
+                    <li>Absorb moisture.</li>
+                    <li>Not a great UV resistance.</li>
+                    <li>Harder to print - also requires specific heat and print bed.</li>
+                </ul>
+            <br>
 
-            </p>
-
-            <h3>PP (Polypropylene)</h3>
-            <p>
-
-            </p>
+            <h3>PP</h3>
+            <p>(Polypropylene)</p>
+            <p>(-CH2-CH(CH3)-)n</p>
+            <br>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Cheap</li>
+                    <li>Excellent chemical resistance.</li>
+                    <li>Hydrophobic.</li>
+                    <li>Good impact resistance.</li>
+                    <li>Good moisture resistance.</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Poor UV resistance.</li>
+                    <li>Can warp easier during print. Requires G10 bed or taping on build plate to help stick.</li>
+                    <li>Difficult to paint.</li>
+                    <li>Lower heat resistance compared to other polymers.</li>
+                </ul>
+            <br>
 
             <h3>PLA</h3>
-            <p>
-
-            </p>
+            <p>Polyactic Acid</p>
+            <p>(-C3H4O2-)n</p>
+            <br>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Easy to print</li>
+                    <li>Cheap</li>
+                    <li>Moderate print detail.</li>
+                    <li>Low warping during prints.</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Brittle.</li>
+                    <li>Poor heat resistance.</li>
+                    <li>Poor long-term moisture resistance.</li>
+                    <li>Low chemical resistance.</li>
+                    <li>Degrades over time.</li>
+                </ul>
+            <br>
 
             <h3>Resin</h3>
-            <p>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Extremely high detail in prints or moulds.</li>
+                    <li>Smooth surface finishes.</li>
+                    <li>Good for prototypes, ornaments or projects.</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Brittle.</li>
+                    <li>UV degration over time.</li>
+                    <li>Low impact resistence.</li>
+                    <li>Can potentially be exposed to subsurface cracks or surface cracks over time.</li>
+                    <li>Produces airborne fumes that can be hazardous to health.</li>
+                </ul>
+            <br>
 
-            </p>
+            <h3>ABS</h3>
+            <p>Acrylonitrile Butadiene Styrene.</p>
+            <p>Chemically made from Acrylonitrile, Butadiene, and Styrene.</p>
+            <br>
+            <p></p>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Very tough.</li>
+                    <li>Good Machinability.</li>
+                    <li>Excellent impact resistance.</li>
+                    <li>Easy injection moulding.</li>
+                    <li>Widely used in many engineering plastics.</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Poor UV resistance.</li>
+                    <li>Not Chemical resistant.</li>
+                    <li>Warps during the printing process - can cause prints to fail.</li>
+                    <li>Produces airborne fumes that can be hazardous to health.</li>
+                </ul>
+            <br>
+
+            <h3>PET</h3>
+            <p>Polyethylene Terephthalate</p>
+            <p>Polyster made from Ethylene glycol and Terephthalic acid.</p>
+            <p>(-O-CH2-CH2-O-CO-C6H4-CO-)n</p>
+            <br>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Good chemical resistance.</li>
+                    <li>Strong.</li>
+                    <li>Recycable.</li>
+                    <li>Good moisture resistance.</li>
+                    <li>Excellent barrier properties as it is used in bottles.</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Absorbs moisture before processing - can make it brittle.</li>
+                    <li>Low heat resistance.</li>
+                    <li>Brittle compared to polymers like ABS and TPU.</li>
+                    <li>Can crystalise during processing which can complicate printing.</li>
+                    <li>Harder to print than PLA - requires specific heats and conditions.</li>
+
+                </ul>
+            <br>
 
             <h3>PETG</h3>
-            <p>
-
-            </p>
+            <p>Polyethylene Terephthalate Glycol.</p>
+            <p>Modified PET with glycol to reduce crystallization.</p>
+            <h4>Pros:</h4>
+                <ul>
+                    <li>Tougher than PLA.</li>
+                    <li>Easier to print than ABS.</li>
+                    <li>Good chemical resistance.</li>
+                    <li>Good transparency.</li>
+                    <li>Better impact resistance compared to PLA</li>
+                </ul>
+            <br>
+            <h4>Cons:</h4>
+                <ul>
+                    <li>Scratches easily.</li>
+                    <li>Can string and fail during prints easily.</li>
+                    <li>Moderate moisture sensitivity.</li>
+                    <li>Less heat resistance than some plastics.</li>
+                </ul>
+            <br>
 
             <h2>Project Materials Choice</h2>
             <h3>Start of Project Plans.</h3>
-            <p>
-
-            </p>
-
-            <h3>End of Project Plan - Final Print.</h3>
+            <p>After extensive research, the project direction for materials decided upon are as follows:</p>
+            <ul>
+                <li>Skull, Skull Lid, Lower Jaw, Inner tongue/Jaw, Spine and pipes will be done in PP, in case Silicone is a resource that is out of reach. These two were decided base on environmental concerns addressed above.</li>
+            </ul>
+            <br>
+            <ul>
+                <li>The group investigated the potential of laser cut acrylic for the base however at this point are undecided.</li>
+            </ul>
+            <br>
+            <ul>
+                <li>The mechanism will be the same material as the base modelled skull to provide a stronger material and address concerns with the environment.</li>
+            </ul>
+            <br>
+            <h3>Mid-Project.</h3>
+            <p>With the base changing a material is still unconfirmed during this timespan. The skull model is proceeding to plan with PP. The mechanism is proceeding to plan. </p>
+            <br>
+            <h3>End of Project.</h3>
+            <p>Due to error corrections, time constraints and lack of resources that ended up being available. Changes to the materials we're made just to get a working prototype out, future production of this prototype will be in the materials selected previously, as in practical uses in the environment it is being placed in that was the most suitable, affordable and environmental friendly choice out of the printable and mouldable materials in the labs.</p>
+            <br>
+            <ul>
+                <li>Skull, Skull Lid, Lower Jaw, Inner tongue/Jaw, Spine and pipes: Now printed in PLA due to a previous print failure due to old worn out filament. A new supply delivered would take longer than the module therefore as a result a prototype, for the prototype was decided.</li>
+                <li>Base: Constructed from MDF wood, and Plywood. Also due to time constraints and resource constraints. The group investigated donated/ free wood from a local DIY/hardware retail facility, to which was then used as a last minute resort to get a functioning base.</li>
+                <lI>Mechanism: With the same issues as the skull, the mechanism also was 3D printed with PLA just to demonstrate a working mechanism.</lI>
+            </ul>        
         </section>
 
         <section class="about-section panel">
@@ -246,42 +589,68 @@
             <h2>Recycability, longevity and Environmental Impact</h2>
             <h3>Silicone:</h3>
             <p>
-
+                Silicone is durable, long-lasting, reducing replacement waste which can make it more economically friendly, however at the end of its life it is difficult to recycle and does not biodegrate naturally. When it is chemically produced, it can reliease industrial emissions during chemical processing.
             </p>
 
             <h3>TPU:</h3>
             <p>
-
+                Is flexable and durable with some recyclable properties, however it is petroleum-based and can contribute to microplastic pollution if not disposed of safely.
             </p>
 
             <h3>PP (Polypropylene):</h3>
             <p>
-
+                Is widely recycable and has a very long lifespan, making it more economically friendly through efficiency and reliability despite being patroleum-based.
             </p>
 
             <h3>PLA:</h3>
             <p>
-
+                PLA is a biodegradable bioplastic from renewable resources like corn starch. This makes it more environmentally friendly than most plastics, although it requires industrial compositing conditions to properly decompose. Also with rising popularity in 3D printing hobbists, PLA recycling has increased, questioning how much more economically friendly it is statistically compared to other plastics as industrial production and transport still give carbon emissions.
             </p>
 
             <h3>Resin:</h3>
             <p>
-
+                Generally Resin is difficult to recycle, and produce excess waste during moulding or printing. Releasing harmful airborne particles. This makes Resin one of the least environmentally friendly materials.
             </p>
+            <br>
+
+            <h3>ABS</h3>
+            <p>
+                ABS is durable, and it is recycable but it is petroleum-based and releases higher emissions compared to other thermoplastics.
+            </p>
+            <br>
+
+            <h3>PET</h3>
+            <p>
+                PET is highly recycable and is commonly used in consumer bottles, packaging and kitchenware products. Its makes it one of the more sustainable plastics, but only if effective recycling systems are in place and facilities are within distance.
+            </p>
+            <br>
 
             <h3>PETG:</h3>
             <p>
-
+                Combines durability with recyclability. Though it still releases harmful emissions, it is less than ABS. Although it still remains patroleum-based, and can only be recycled effectively if a local system and facility are in place.
             </p>
+            <br>
 
-            <p>A longer lasting product can sometimes be more evironmentally beneficial than a biodegradable product requiring frequent replacement.</p>
+            <p align="center"> Longer lasting products can sometimes be more evironmentally beneficial than a biodegradable product requiring frequent replacements. Which is why PP was chosen over PLA, even though they are both cheap to use in production, the group chose a more sustainable and environmentally friendly resolution for the end of life concerns once the project had passed its useable or desirable needs.</p>
         </section>
 
         <section class="about-section panel">
             <div class="panel-label"><h1>Reflection</h1></div>
-            <p>
+            <h3>Setbacks and Resolutions.</h3>
+            <p></p>
+            <br>
 
-            </p>
+            <h3>Future Production</h3>
+            <p></p>
+            <br>
+
+            <h3>What I could have done differently/ What I have learnt.</h3>
+            <p></p>
+            <br>
+
+            <h3>Conclusion</h3>
+            <p></p>
+            <br>
         </section>
     </main>
 
