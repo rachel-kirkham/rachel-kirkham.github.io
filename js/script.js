@@ -249,7 +249,7 @@ function setupProgressGraph() {
       pad.l + pad.r + (data.length - 1) * pointSpacing
     );
 
-    canvas.height = parent.clientHeight;
+    canvas.height = Math.max(260, parent.clientHeight - 20);
 
     canvas.style.width = `${canvas.width}px`;
     canvas.style.height = `${canvas.height}px`;
@@ -365,7 +365,17 @@ function setupChatbot() {
     profile: "The Profile page explains the background of the person behind the project.",
     design: "The Design Process and Design STL pages document concept development, modelling work, and 3D design outputs.",
     version: "The current version shown here is v0.4.2 beta.",
-    stl: "The Design STL page contains 3D model outputs and related design information."
+    stl: "The Design STL page contains 3D model outputs and related design information.",
+    happy: "I am so glad to hear that!",
+    thanks: "You're very welcome.",
+    bye: "Goodbye. Please feel free to return anytime.",
+    howareyou: "I'm functioning normally and ready to assist with the Soapamorph project| I'm functioning norm... Do you smell burnt circuits?|I am functioning fine, how are you?",
+    cool: "As an ice box!",
+    yes: "Understood!",
+    no: "okie dokie!",
+    joke: "I told my creator I wanted a raise… so they increased my voltage. Now I’m shocked at how much energy I have!|I would tell a robotics joke, but the humour module overheated.|I tried debugging the robot. It just developed emotional damage instead.|The AI assistant attempted world domination but got stuck updating Windows.|I asked another chatbot to relax. It opened another terminal instead.",
+    creator: "I'm sworn to secrecy!",
+    favourite: "My favourite deature is probably the holographic earth display!"
   };
 
   const responsesBox = document.getElementById("chat-responses");
@@ -390,6 +400,15 @@ function setupChatbot() {
     if (/\b(design|process)\b/.test(lower)) return responses.design;
     if (/\b(stl|3d|model)\b/.test(lower)) return responses.stl;
     if (/\b(version|v0)\b/.test(lower)) return responses.version;
+    if (/\b(thank|thanks)\b/.test(lower)) return responses.thanks;
+    if (/\b(how are you|howre you|how are u)\b/.test(lower)) return responses.howareyou;
+    if (/\b(bye|goodbye|see ya)\b/.test(lower)) return responses.bye;
+    if (/\b(cool|nice|awesome)\b/.test(lower)) return responses.cool;
+    if (/\b(joke|funny)\b/.test(lower)) return responses.joke;
+    if (/\b(creator|made you|who made you)\b/.test(lower)) return responses.creator;
+    if (/\b(favorite|favourite|best feature)\b/.test(lower)) return responses.favorite;
+    if (/\byes\b/.test(lower)) return responses.yes;
+    if (/\bno\b/.test(lower)) return responses.no;
 
     return responses.default;
   }
